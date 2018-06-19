@@ -1,0 +1,43 @@
+.Container {
+  margin-bottom: 30px;
+}
+
+.PostcodeForm {
+  display: flex;
+}
+
+.FindPostcodeButton {
+  border-radius: 0 3px 3px 0;
+}
+
+.FindPostcodeField {
+  margin-bottom: 0;
+  height: 46px;
+  border: 1px solid #e5e5e5;
+  border-right: 0;
+  border-radius: 3px 0 0 3px;
+  min-width: 200px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.CallStoreButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  img {
+    margin-right: 10px;
+  }
+}
+
+.Error {
+  text-align: center;
+  color: #cc0000;
+  margin: 10px;
+}

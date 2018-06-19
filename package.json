@@ -1,0 +1,98 @@
+{
+  "name": "theme",
+  "license": "UNLICENSED",
+  "version": "0.0.1",
+  "scripts": {
+    "watch": "slate watch -e development",
+    "deploy": "slate deploy -e development",
+    "start": "node ./src/react/config/webpackDevServer.js",
+    "build": "webpack --config ./src/react/config/webpack.config.prod.js",
+    "test": "jest --watch",
+    "test-coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.6.0",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.1.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "moxios": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "react-dev-utils": "^5.0.1",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.11.0",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.0.2",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "classnames": "^2.2.5",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
+  "engines": {
+    "node": ">=4.0 <10"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/react/config/jest/jestSetup.js",
+    "moduleDirectories": [
+      "<rootDir>/src/react",
+      "node_modules"
+    ],
+    "collectCoverageFrom": [
+      "src/react/**/*.{js,jsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/react/public/coverage",
+      "<rootDir>/src/react/scripts",
+      "<rootDir>/src/react/containers/PostcodeLookup/index.js"
+    ],
+    "testMatch": [
+      "<rootDir>/src/react/**/__tests__/**/*.{js,jsx,mjs}",
+      "<rootDir>/src/react/**/?(*.)(spec|test).{js,jsx,mjs}"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/src/react/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/src/react/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "\\.(css|scss)$": "<rootDir>/src/react/config/jest/__mocks__/styleMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/react/config/jest/__mocks__/fileMock.js"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx",
+      "node"
+    ],
+    "coverageDirectory": "<rootDir>/src/react/public/coverage"
+  }
+}

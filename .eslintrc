@@ -1,0 +1,52 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": "airbnb",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "comma-dangle": ["error", {
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+    }],
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+    "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
+    "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION__"] }],
+    "max-len": ["error", 150],
+    "camelcase": ["error"],
+    "object-curly-newline": 0,
+    "object-property-newline": ["error", { "allowMultiplePropertiesPerLine": false }],
+    "no-confusing-arrow": ["error", {"allowParens": true}],
+    "global-require": "off",
+    "padded-blocks": 0,
+    "no-plusplus": 0,
+    "no-param-reassign": ["error", { "props": false }],
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": ["error", { "js": "never"}],
+    "react/require-default-props": 0,
+    "react/forbid-prop-types": [
+      1,
+      {
+        "forbid": [
+          "any"
+        ]
+      }
+    ],
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-max-props-per-line": [2, { maximum: 2}],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-handler-names": 2,
+    "jsx-a11y/href-no-hash": ["off"],
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/label-has-for": 0,
+    "no-console": 1,
+    "function-paren-newline": ["error", "consistent"]
+  }
+}
