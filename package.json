@@ -5,8 +5,8 @@
   "scripts": {
     "watch": "slate watch -e development",
     "deploy": "slate deploy -e development",
-    "start": "node ./src/react/config/webpackDevServer.js",
-    "build": "webpack --config ./src/react/config/webpack.config.prod.js",
+    "start": "node ./src/react/config/start.js",
+    "build": "node ./src/react/config/build.js",
     "test": "jest --watch",
     "test-coverage": "jest --coverage"
   },

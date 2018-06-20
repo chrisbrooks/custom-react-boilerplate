@@ -7,7 +7,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 
 const basePath = path.resolve(__dirname, '../../react');
-const assetPath = path.resolve(__dirname, '../../assets');
+const assetPath = path.resolve(__dirname, '../../build');
 
 const postCssConfig = {
   ident: 'postcss',
@@ -119,6 +119,7 @@ module.exports = {
   },
   plugins: [
     new BundleAnalyzerPlugin({
+      logLevel: 'error',
       analyzerMode: 'static',
       reportFilename: 'react-bundle-report.html',
       openAnalyzer: false,

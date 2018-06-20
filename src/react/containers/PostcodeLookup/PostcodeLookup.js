@@ -25,7 +25,7 @@ class PostcodeLookup extends Component {
 
   handleSubmit() {
     if (this.state.isValid) {
-
+      console.log('sdsd');
       const apiEndPoint = `${this.props.apiUrl}?postcode=${this.state.postcode}`;
 
       this.setState({

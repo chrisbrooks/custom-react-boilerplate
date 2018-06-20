@@ -1,19 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import axios from 'axios';
+import moxios from 'moxios';
 
 import PostcodeLookup from '../PostcodeLookup';
 
 let props;
 
 beforeEach(() => {
+  moxios.install();
   props = {
-    apiUrl: 'https://api.system.bah.com.au/staging/ecom/stores',
+    apiUrl: 'https://api.system.snooze.com.au/staging/ecom/stores',
     phoneIcon: 'http://wwww.sdf.com/phone.svg'
   };
 });
 
 afterEach(() => {
+  moxios.uninstall();
 });
 
 describe('<PostcodeLookup />', () => {
@@ -62,14 +64,29 @@ describe('<PostcodeLookup />', () => {
     expect(wrapper.state().isValid).toEqual(false);
   });
 
-  it('should handle the form submission successful get request', () => {
+  it('should handle the form submission successful post request', () => {
     const wrapper = shallow(<PostcodeLookup {...props} />);
-
     wrapper.setState({
       loading: false,
       isValid: true,
       showPostcodeForm: true,
       postcode: '1111'
+    });
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: {
+          data: [
+            {
+              id: '840',
+              name: 'Gepps Cross',
+              telephone: '(08) 8162 5362',
+            }
+          ]
+        }
+      });
     });
 
     return wrapper.instance().handleSubmit()
@@ -81,21 +98,27 @@ describe('<PostcodeLookup />', () => {
           name: 'Gepps Cross',
           telephone: '0881625362'
         });
-      });
+      })
+      .catch();
   });
 
-  it('should handle the form submission failing get request', () => {
-    props.apiUrl = 'sdsdsd';
+  it('should handle the form submission unsuccessful post request', () => {
     const wrapper = shallow(<PostcodeLookup {...props} />);
-
     wrapper.setState({
-      loading: false,
       isValid: true,
-      showPostcodeForm: true,
-      postcode: '1111'
+      postcode: '3182',
+      shippingEstimate: null
+    });
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400
+      });
     });
 
     return wrapper.instance().handleSubmit()
+      .then(() => {})
       .catch(() => {
         expect(wrapper.state().error).toEqual(true);
         expect(wrapper.state().loading).toEqual(false);
