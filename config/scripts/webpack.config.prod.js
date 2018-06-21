@@ -131,7 +131,7 @@ module.exports = {
       statsFilename: 'stats.json'
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/styles.[hash:8].css'
+      chunkFilename: "css/styles.[hash:8].css"
     }),
     new HtmlWebpackPlugin({
       template: paths.appHtml,
