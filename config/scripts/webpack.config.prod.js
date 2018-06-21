@@ -1,4 +1,3 @@
-const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -6,9 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const paths = require('./paths');
-
-const basePath = path.resolve(__dirname, paths.appSrc);
-const buildPath = path.resolve(__dirname, paths.appBuild);
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ManifestPlugin = require('webpack-manifest-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const postCssConfig = {
   ident: 'postcss',
@@ -28,37 +27,40 @@ const postCssConfig = {
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
-  entry: {
-    'react-shipping-calculator': path.resolve(__dirname, `${basePath}/containers/ShippingCalculator/index.js`),
-    'react-postcode-lookup': path.resolve(__dirname, `${basePath}/containers/PostcodeLookup/index.js`)
-  },
+  entry: paths.appIndexJs,
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, buildPath)
+    filename: 'js/[name].[chunkhash:8].js',
+    path: paths.appBuild
   },
   resolve: {
-    modules: [basePath, 'node_modules'],
+    modules: [paths.appSrc, paths.appNodeModules],
     extensions: ['.js', '.json']
   },
   optimization: {
-    // this is only needed if we are using multiple
-    // entry points which are on the same page
-    runtimeChunk: {
-      name: 'react-runtime-chunk'
-    },
     splitChunks: {
       cacheGroups: {
         commons: {
-          name: 'react-commons-bundle',
-          chunks: 'initial',
-          minChunks: 2
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
         }
       }
+    },
+    runtimeChunk: {
+      name: 'manifest',
     },
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
-        parallel: true
+        parallel: true,
+        sourceMap: true
+      }),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          map: {
+            inline: false
+          }
+        }
       })
     ]
   },
@@ -71,17 +73,17 @@ module.exports = {
           {
             options: {
               formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint')
+              eslintPath: 'eslint'
             },
-            loader: require.resolve('eslint-loader')
+            loader: 'eslint-loader'
           }
         ],
-        include: path.resolve(__dirname, basePath),
+        include: paths.appSrc,
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        include: path.resolve(__dirname, basePath),
+        include: paths.appSrc,
         use: {
           loader: 'babel-loader',
           options: {
@@ -95,15 +97,16 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: path.resolve(__dirname, basePath),
+        include: paths.appSrc,
         exclude: /node_modules/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
               importLoaders: 2,
               modules: true,
+              sourceMap: true,
               localIdentName: '[name]_[local]_[hash:base64:7]'
             }
           },
@@ -122,10 +125,29 @@ module.exports = {
     new BundleAnalyzerPlugin({
       logLevel: 'error',
       analyzerMode: 'static',
-      reportFilename: 'react-bundle-report.html',
+      reportFilename: 'report.html',
       openAnalyzer: false,
       generateStatsFile: true,
-      statsFilename: 'react-bundle-stats.json'
+      statsFilename: 'stats.json'
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/styles.[hash:8].css'
+    }),
+    new HtmlWebpackPlugin({
+      template: paths.appHtml,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyURLs: true
+      }
+    }),
+    new ManifestPlugin({
+      fileName: 'manifest.json'
     })
   ]
 };

@@ -18,6 +18,7 @@ const protocol = 'http';
 const defaultPort = 3000;
 const host = '0.0.0.0';
 const devServerOptions = {
+  contentBase: paths.appPublic,
   hot: true,
   compress: true,
   quiet: true,

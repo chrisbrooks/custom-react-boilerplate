@@ -1,11 +1,8 @@
-const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const paths = require('./paths');
-
-const basePath = path.resolve(__dirname, paths.appSrc);
 
 const postCssConfig = {
   ident: 'postcss',
@@ -31,31 +28,26 @@ const buildEntryPoint = entryPoint => [
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-  entry: {
-    'react-shipping-calculator': buildEntryPoint(path.resolve(__dirname, `${basePath}/containers/ShippingCalculator/index.js`)),
-    'react-postcode-lookup': buildEntryPoint(path.resolve(__dirname, `${basePath}/containers/PostcodeLookup/index.js`))
-  },
+  entry: buildEntryPoint(paths.appIndexJs),
   output: {
     filename: '[name].js',
   },
   resolve: {
-    modules: [basePath, 'node_modules'],
+    modules: [paths.appSrc, paths.appNodeModules],
     extensions: ['.js', '.json']
   },
   optimization: {
-    // this is only needed if we are using multiple
-    // entry points which are on the same page
-    runtimeChunk: {
-      name: 'react-runtime-chunk'
-    },
     splitChunks: {
       cacheGroups: {
         commons: {
-          name: 'react-commons-bundle',
-          chunks: 'initial',
-          minChunks: 2
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
         }
       }
+    },
+    runtimeChunk: {
+      name: 'manifest'
     }
   },
   module: {
@@ -67,17 +59,17 @@ module.exports = {
           {
             options: {
               formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint')
+              eslintPath: 'eslint'
             },
-            loader: require.resolve('eslint-loader')
+            loader: 'eslint-loader'
           }
         ],
-        include: path.resolve(__dirname, basePath),
+        include: paths.appSrc
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        include: path.resolve(__dirname, basePath),
+        include: paths.appSrc,
         use: {
           loader: 'babel-loader',
           options: {
@@ -91,7 +83,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: path.resolve(__dirname, basePath),
+        include: paths.appSrc,
         exclude: /node_modules/,
         use: [
           'style-loader',
