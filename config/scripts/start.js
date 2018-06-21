@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const clearConsole = require('react-dev-utils/clearConsole');
+const paths = require('./paths');
 const {
   choosePort,
   createCompiler,
@@ -8,9 +9,10 @@ const {
 } = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
 const config = require('./webpack.config.dev');
-const appName = require('../../../package.json').name;
+// eslint-disable-next-line
+const appName = require(paths.appPackageJson).name;
 
-const useYarn = '../../../yarn.lock';
+const useYarn = paths.yarnLockFile;
 const isInteractive = process.stdout.isTTY;
 const protocol = 'http';
 const defaultPort = 3000;

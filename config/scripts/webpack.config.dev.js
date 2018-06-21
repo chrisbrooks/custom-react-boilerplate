@@ -3,8 +3,9 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
+const paths = require('./paths');
 
-const basePath = path.resolve(__dirname, '../../react');
+const basePath = path.resolve(__dirname, paths.appSrc);
 
 const postCssConfig = {
   ident: 'postcss',
@@ -117,7 +118,7 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: `${basePath}/public/index.html`
+      template: paths.appHtml
     })
   ]
 };

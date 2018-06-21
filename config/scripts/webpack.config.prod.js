@@ -5,9 +5,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
+const paths = require('./paths');
 
-const basePath = path.resolve(__dirname, '../../react');
-const assetPath = path.resolve(__dirname, '../../build');
+const basePath = path.resolve(__dirname, paths.appSrc);
+const buildPath = path.resolve(__dirname, paths.appBuild);
 
 const postCssConfig = {
   ident: 'postcss',
@@ -33,7 +34,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, assetPath)
+    path: path.resolve(__dirname, buildPath)
   },
   resolve: {
     modules: [basePath, 'node_modules'],
