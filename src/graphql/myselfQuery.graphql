@@ -1,0 +1,10 @@
+query MyselfQuery {
+  viewer {
+    myself {
+      id
+      firstName
+      lastName
+      email
+    }
+  }
+}

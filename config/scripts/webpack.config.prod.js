@@ -8,6 +8,10 @@ const paths = require('./paths');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require('webpack-manifest-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const getClientEnvironment = require('./env');
+
+const publicUrl = '/';
+const env = getClientEnvironment(publicUrl);
 
 const postCssConfig = {
   ident: 'postcss',
@@ -30,7 +34,8 @@ module.exports = {
   entry: paths.appIndexJs,
   output: {
     filename: 'js/[name].[chunkhash:8].js',
-    path: paths.appBuild
+    path: paths.appBuild,
+    publicPath: '/'
   },
   resolve: {
     modules: [paths.appSrc, paths.appNodeModules],
@@ -118,10 +123,18 @@ module.exports = {
             loader: 'sass-loader'
           }
         ]
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'graphql-tag/loader'
+        }]
       }
     ]
   },
   plugins: [
+    new webpack.DefinePlugin(env.stringified),
     new BundleAnalyzerPlugin({
       logLevel: 'error',
       analyzerMode: 'static',

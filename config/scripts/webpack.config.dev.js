@@ -3,6 +3,10 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const paths = require('./paths');
+const getClientEnvironment = require('./env');
+
+const publicUrl = '';
+const env = getClientEnvironment(publicUrl);
 
 const postCssConfig = {
   ident: 'postcss',
@@ -31,6 +35,7 @@ module.exports = {
   entry: buildEntryPoint(paths.appIndexJs),
   output: {
     filename: '[name].js',
+    publicPath: '/'
   },
   resolve: {
     modules: [paths.appSrc, paths.appNodeModules],
@@ -103,10 +108,18 @@ module.exports = {
             loader: 'sass-loader'
           }
         ]
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'graphql-tag/loader'
+        }]
       }
     ]
   },
   plugins: [
+    new webpack.DefinePlugin(env.stringified),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
