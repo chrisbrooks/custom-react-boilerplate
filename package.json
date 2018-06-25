@@ -76,18 +76,18 @@
     "node": ">=4.0 <10"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/src/react/config/jest/jestSetup.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/config/jest/jestSetup.js",
     "moduleDirectories": [
-      "<rootDir>/src/react",
+      "<rootDir>/src",
       "node_modules"
     ],
     "collectCoverageFrom": [
-      "src/react/**/*.{js,jsx}"
+      "src/**/*.{js,jsx}"
     ],
     "coveragePathIgnorePatterns": [],
     "testMatch": [
-      "<rootDir>/src/react/**/__tests__/**/*.{js,jsx,mjs}",
-      "<rootDir>/src/react/**/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]"
@@ -96,8 +96,8 @@
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/src/react/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/src/react/config/jest/fileTransform.js"
+      "^.+\\.css$": "<rootDir>/src/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/src/config/jest/fileTransform.js"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
@@ -105,15 +105,14 @@
     "moduleNameMapper": {
       "\\.(gql|graphql)$": "<rootDir>/node_modules/jest-transform-graphql",
       "^react-native$": "react-native-web",
-      "\\.(css|scss)$": "<rootDir>/src/react/config/jest/__mocks__/styleMock.js",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/react/config/jest/__mocks__/fileMock.js"
+      "\\.(css|scss)$": "<rootDir>/src/config/jest/__mocks__/styleMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/config/jest/__mocks__/fileMock.js"
     },
     "moduleFileExtensions": [
       "js",
       "json",
-      "jsx",
       "node"
     ],
-    "coverageDirectory": "<rootDir>/src/react/public/coverage"
+    "coverageDirectory": "<rootDir>/src/public/coverage"
   }
 }
