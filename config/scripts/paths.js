@@ -19,5 +19,6 @@ module.exports = {
   yarnLockFile: resolveApp('yarn.lock'),
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
-  appIndexJs: resolveApp('src/index.js')
+  appIndexJs: resolveApp('src/index.js'),
+  globalSass: resolveApp('src/sass')
 };

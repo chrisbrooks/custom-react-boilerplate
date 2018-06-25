@@ -1,0 +1,96 @@
+@import "shared.scss";
+
+$loadingIconSize: 17px;
+$loadingIconThickness: 4px;
+$loadingIconMargin: -(($loadingIconSize + $loadingIconThickness * 2) / 2);
+
+.Button {
+  height: 50px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  position: relative;
+  padding: 0 $lg;
+  border-radius: $lg;
+  letter-spacing: 2px;
+  font-weight: 300;
+  font-size: $font-small;
+  border: none;
+  width: 100%;
+
+  @include medium-large {
+    height: $lg;
+    width: auto;
+  }
+
+  &:focus {
+    outline:0;
+  }
+
+}
+
+.Primary {
+  composes: Button;
+  color: $white;
+  background-color: $primary-green;
+
+  &:hover {
+    background-color: darken( $primary-green, 10% );
+  }
+}
+
+.Secondary {
+  composes: Button;
+  color: $white;
+  background-color: $primary-background;
+  border: 1px solid $secondary-grey;
+}
+
+.Disabled {
+  composes: Button;
+  color: $white !important;
+  background-color: $primary-blue;
+  cursor: default;
+}
+
+.Loading {
+  composes: Button;
+  color: transparent!important;
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    margin: $loadingIconMargin 0 0 $loadingIconMargin;
+    width: $loadingIconSize;
+    height: $loadingIconSize;
+    border-radius: 500rem;
+    border: $loadingIconThickness solid $secondary-blue;
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    margin: $loadingIconMargin 0 0 $loadingIconMargin;
+    width: $loadingIconSize;
+    height: $loadingIconSize;
+    animation: button-spin .6s linear;
+    animation-iteration-count: infinite;
+    border-radius: 500rem;
+    border-color: $secondary-grey transparent transparent;
+    border-style: solid;
+    border-width: $loadingIconThickness;
+    box-shadow: 0 0 0 1px transparent;
+  }
+}
+
+@keyframes button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+};

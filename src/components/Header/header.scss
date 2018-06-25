@@ -1,0 +1,46 @@
+@import "shared.scss";
+
+.Container {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+  height: 300px;
+  display: flex;
+  align-items: end;
+  padding: $sm $md 0;
+}
+
+.Account {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.User {
+  color: $white;
+  text-transform: uppercase;
+}
+
+.LogoContainer {
+  display: flex;
+  align-items: center;
+  margin-top: $xxs;
+}
+
+.Logo {
+  width: 40px;
+}
+
+.Title {
+  color: $white;
+  font-size: 20px;
+  text-align: center;
+  margin-left: $sm;
+  font-family: 'Fjalla One', sans-serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.Profile {
+  margin-left: $xs;
+  width: $md * 2;
+  display: block;
+}

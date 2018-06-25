@@ -1,10 +1,22 @@
 // eslint-disable-next-line
 export const typeDefs = `
-type Query {
-  channels: [Channel]
+schema {
+  query: RootQuery,
+  mutation: RootMutation
 }
-type Channel {
-   id: ID!
-   name: String
+
+type RootQuery {
+  viewer: Viewer!
+}
+
+type Viewer {
+  myself: User
+}
+
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
 }
 `;

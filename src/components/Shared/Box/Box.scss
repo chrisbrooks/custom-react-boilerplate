@@ -1,0 +1,35 @@
+@import "shared.scss";
+
+.Box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: $white;
+  margin-bottom: $sm;
+  padding: $md;
+
+  @include medium-large {
+    margin: $sm 0;
+  }
+}
+
+.noBottomPadding {
+  padding-bottom: 0;
+}
+
+.noPadding {
+  padding: 0;
+}
+
+.Right {
+  flex-direction: row-reverse;
+}
+
+.noMargin {
+  margin-bottom: 0;
+
+  @include medium-large {
+    margin: $sm 0 0;
+  }
+
+}

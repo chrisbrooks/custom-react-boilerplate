@@ -25,6 +25,7 @@ const devServerOptions = {
   hot: true,
   compress: true,
   quiet: true,
+  historyApiFallback: true,
   overlay: {
     errors: true
   }

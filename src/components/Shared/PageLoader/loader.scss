@@ -1,0 +1,12 @@
+@import "shared.scss";
+
+.Loader {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: -24px auto 0;
+  width: 48px;
+  height: 48px;
+}

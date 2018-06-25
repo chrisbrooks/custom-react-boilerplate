@@ -1,13 +1,17 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import { reducer as formReducer } from 'redux-form';
 
 const configureStore = () => {
+
+  const reducers = {
+    form: formReducer
+  };
 
   /*
   * Use webpack's 'require.context' to traverse the project and grab all *.reducers.js files
   * Reducers can be located next to their related files
   */
-  const reducers = {};
   const context = require.context('./', true, /^.*\.reducers.js/);
   context.keys().forEach((key) => {
     reducers[key.split('/').pop().replace('.reducers.js', '')] = context(key).default;

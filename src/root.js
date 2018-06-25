@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
 import { ApolloProvider } from 'react-apollo';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+import getRoutes from 'routes';
 
 const Root = ({
   store,
@@ -12,7 +12,7 @@ const Root = ({
   <ApolloProvider client={client}>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <Route component={getRoutes} path="/" />
       </BrowserRouter>
     </Provider>
   </ApolloProvider>

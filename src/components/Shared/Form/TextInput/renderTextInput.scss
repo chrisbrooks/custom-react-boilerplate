@@ -1,0 +1,44 @@
+@import "shared.scss";
+
+.Guide {
+  font-size: $font-small;
+  line-height: $line-height-small;
+  color: $secondary-grey;
+  margin-top: -$xxs;
+  margin-bottom: $xxs;
+  display: inherit;
+}
+
+.Image {
+  position: absolute;
+  right: 0;
+  top: -4px;
+}
+
+.Icon {
+  position: absolute;
+  right: 1px;
+  top: 22px;
+  height: 45px;
+  width: 55px;
+  pointer-events: none;
+  color: $secondary-grey;
+  background: linear-gradient(to right, rgba(255,255,255,0.01) 0%,rgba(255,255,255,1) 35%);
+  @include medium-large {
+    top: 22px;
+    right: 1px;
+    height: 30px;
+    border-radius: $xxs / 2;
+  }
+
+  i {
+    float: right;
+    margin-top: $sm - 4;
+    margin-right: $sm;
+    font-size: $font-medium-large;
+    @include medium-large {
+      margin-top: 7px;
+      font-size: $font-standard;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+@import 'shared';
+
+.Container {
+  background: url('./images/background.jpg') no-repeat bottom left;
+  height: 100vh;
+  margin-top: 0;
+  box-sizing: border-box;
+  background-size: cover;
+}
+
+.Wrapper {
+  display: flex;
+  margin: auto;
+}
+
+.Card {
+  width: 400px;
+  height: 600px;
+  background: -webkit-linear-gradient(top, $primary-green 0%,$ternary-blue 100%);
+  border-radius: $xxs 0 0 $xxs;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.FormContainer {
+  position: relative;
+}
+
+.Form {
+  width: 400px;
+  height: 600px;
+  background: -webkit-linear-gradient(top, $primary-blue 0%,$secondary-blue 100%);
+  border-radius: 0 $xxs $xxs 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  label {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: $font-small;
+  }
+}
+
+.FormWrapper {
+  width: 80%;
+}
+
+.Logo {
+  width: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+.Title {
+  color: $white;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-family: 'Fjalla One', sans-serif;
+  letter-spacing: 4px;
+}
+
+.Slogan {
+  color: $white;
+  text-align: center;
+  font-weight: 300;
+  font-size: $font-medium;
+}
+
+
+.Tabs {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: $sm;
+  right: $sm;
+  border-radius: $lg;
+  background: #43b5b7;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: $font-extra-small;
+  color: $white;
+  text-align: center;
+  cursor: default;
+
+  li {
+    padding: 0 20px;
+    height: $md;
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      border-radius: $lg 0 0 $lg;
+    }
+
+    &:last-child {
+      border-radius: 0 $lg $lg 0;
+    }
+  }
+}
+
+.DisabledTab {
+  box-shadow: inset 1px 2px $xxs darken($primary-blue, 9%);
+  background: darken($primary-blue, 5%);
+  cursor: pointer;
+}

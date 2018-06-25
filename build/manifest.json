@@ -1,11 +1,12 @@
 {
-  "manifest.js": "/js/manifest.e121d6ec.js",
-  "manifest.js.map": "/js/manifest.e121d6ec.js.map",
-  "vendor.js": "/js/vendor.2dbd2f1d.js",
-  "vendor.js.map": "/js/vendor.2dbd2f1d.js.map",
-  "main.css": "/css/styles.f499479f.css",
-  "main.js": "/js/main.0f72bb0d.js",
-  "main.js.map": "/js/main.0f72bb0d.js.map",
-  "css/styles.f499479f.css.map": "/css/styles.f499479f.css.map",
+  "manifest.js": "/js/manifest.63962427.js",
+  "vendor.js": "/js/vendor.5d1978dc.js",
+  "main.css": "/css/styles.23ba9502.css",
+  "main.js": "/js/main.cd836302.js",
+  "media/bg.png": "/media/bg.e3f8c4b7.png",
+  "media/background.jpg": "/media/background.8cb2d466.jpg",
+  "media/logo.png": "/media/logo.5062a6f4.png",
+  "media/profile.png": "/media/profile.8e6a856f.png",
+  "css/styles.23ba9502.css.map": "/css/styles.23ba9502.css.map",
   "index.html": "/index.html"
 }

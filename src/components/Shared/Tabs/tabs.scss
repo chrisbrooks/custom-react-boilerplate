@@ -1,0 +1,31 @@
+@import 'shared';
+
+.Toggle {
+  position: absolute;
+  top: $sm;
+  right: $sm;
+  display: flex;
+}
+
+.SignUp {
+  background: #43b5b7;
+  height: $md;
+  color: $white;
+  padding: 0 20px;
+  border: none;
+  border-radius: 0 $lg $lg 0;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.SignIn {
+  composes: SignUp;
+  border-radius: $lg 0 0 $lg;
+}
+
+.Disabled {
+  box-shadow: inset 1px 2px $xxs darken($primary-blue, 9%);
+  background: darken($primary-blue, 5%);
+}

@@ -1,0 +1,140 @@
+.hidden-mobile {
+  @include small {
+    display: none !important;
+  }
+}
+
+.hidden-tablet-desktop {
+  @include medium-large {
+    display: none !important;
+  }
+}
+
+.hidden-desktop {
+  @include large {
+    display: none !important;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.hide {
+  display: none !important;
+}
+
+.hide-label {
+  visibility: hidden !important;
+  margin-bottom: 0 !important;
+  line-height: 0 !important
+}
+
+.p-rel {
+  position: relative !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.text--left {
+  text-align: left !important;
+}
+
+.text--right {
+  text-align: right !important;
+}
+
+.text--center {
+  text-align: center !important;
+}
+
+.margin-small-vertical {
+  margin: $sm 0 !important;
+}
+
+.margin-small-top {
+  margin-top: $sm !important;
+}
+
+.margin-small-bottom {
+  margin-bottom: $sm !important;
+}
+
+.margin-medium-bottom {
+  margin-bottom: $md !important;
+}
+
+.margin-large-bottom {
+  margin-bottom: $lg !important;
+}
+
+.margin-small-right {
+  margin-right: $sm !important;
+}
+
+.margin-small-left {
+  margin-left: $sm !important;
+}
+
+.action-icons {
+  a {
+    color: $secondary-grey;
+  }
+}
+
+.multi-line {
+  white-space: pre-line;
+}
+
+@mixin children-fifty-fifty {
+  display: flex;
+  flex-wrap: wrap;
+  > * {
+    width: calc(50% - 8px);
+    &:nth-child(2n+1) {
+      margin-right: 16px;
+    }
+  }
+}
+
+.children-col-xs-6 {
+  @include children-fifty-fifty
+}
+
+.children-col-sm-6 {
+  @include medium-large {
+    @include children-fifty-fifty
+  }
+}
+
+.section {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  // padding: $sm / 2;
+  @include medium-large {
+    max-width: $max-width;
+  }
+}
+
+.has-error {
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="password"],
+  .Select-control {
+    border-color: $primary-error !important;
+  }
+}
+
+.error-message {
+  color: $primary-error !important;
+}

@@ -1,0 +1,84 @@
+.Icon {
+  font-family: "skfont";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: 0;
+
+  /* You can be more comfortable with increased icons size */
+  //font-size: 10px;
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.arrow:before { content: '\e803'; }
+.calendar:before { content: '\e800'; } /* '' */
+.check:before { content: '\e801'; } /* '' */
+.checksolid:before { content: '\e802'; } /* '' */
+.chevron-down:before { content: '\e803'; } /* '' */
+.chevron-left:before { content: '\e804'; } /* '' */
+.chevron-right:before { content: '\e805'; } /* '' */
+.chevron-up:before { content: '\e806'; } /* '' */
+.clock:before { content: '\e807'; } /* '' */
+.comment:before { content: '\e808'; } /* '' */
+.document:before { content: '\e809'; } /* '' */
+.downloadinvoice:before { content: '\e80a'; } /* '' */
+.downloadsidekicks:before { content: '\e80b'; } /* '' */
+.exit:before { content: '\e80c'; } /* '' */
+.filter-01:before { content: '\e80d'; } /* '' */
+.filter:before { content: '\e80e'; } /* '' */
+.hide:before { content: '\e80f'; } /* '' */
+.idtag:before { content: '\e810'; } /* '' */
+.internet:before { content: '\e811'; } /* '' */
+.leveldown:before { content: '\e812'; } /* '' */
+.lighteningbolt:before { content: '\e813'; } /* '' */
+.logout:before { content: '\e814'; } /* '' */
+.mail:before { content: '\e815'; } /* '' */
+.mapmarkeroutlined:before { content: '\e816'; } /* '' */
+.menu:before { content: '\e817'; } /* '' */
+.mobile:before { content: '\e818'; } /* '' */
+.notifications:before { content: '\e819'; } /* '' */
+.paperclip-01:before { content: '\e81a'; } /* '' */
+.pencil:before { content: '\e81b'; } /* '' */
+.phone:before { content: '\e81c'; } /* '' */
+.plus:before { content: '\e81d'; } /* '' */
+.pulse:before { content: '\e81e'; } /* '' */
+.search:before { content: '\e81f'; } /* '' */
+.settings:before { content: '\e820'; } /* '' */
+.site:before { content: '\e821'; } /* '' */
+.starempty:before { content: '\e822'; } /* '' */
+.starfull:before { content: '\e823'; } /* '' */
+.starhalf:before { content: '\e824'; } /* '' */
+.tag:before { content: '\e825'; } /* '' */
+.tick:before { content: '\e826'; } /* '' */
+.user:before { content: '\e827'; } /* '' */
+.views:before { content: '\e828'; } /* '' */
+.briefcase:before { content: '\e829'; } /* '' */
+.scroll:before { content: '\e82a'; } /* '' */
+.talentpool:before { content: '\e82b'; } /* '' */
+.padlock:before { content: '\e82c'; } /* '' */
+.dollarsign:before { content: '\e82d'; } /* '' */
+.add:before { content: '\e82e'; } /* '' */
+.tooltip:before { content: '\e82f'; } /* '' */

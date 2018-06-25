@@ -1,0 +1,64 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Regular font family
+$text-font-stack: 'Roboto Condensed', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif' !default;
+$text-bold-font-stack: 'Helvetica', 'Arial', 'sans-serif' !default;
+
+/// Colors
+$white: #FFFFFF !default;
+$primary-grey: #E4E4E4 !default;
+$secondary-grey: #777777 !default;
+$ternary-grey: #A0A0A0 !default;
+$primary-black: #27343B !default;
+$primary-background: $white !default;
+$secondary-background: #FAFAFB !default;
+$body-background: #E4E4E7 !default;
+$primary-green: #43b5b7 !default;
+$secondary-green: #25749c !default;
+$ternary-green: #d4d4b2 !default;
+$primary-blue: #374b5a !default;
+$secondary-blue: #202c3b !default;
+$ternary-blue: #22568f !default;
+$primary-error: #FF1826 !default;
+
+
+/// Sizes for padding / margins etc
+$xxs: 6px;
+$xs: 10px;
+$sm: 16px;
+$md: 26px;
+$lg: 36px;
+
+/// Sizes for font / line height
+$font-extra-small: 10px;
+$line-height-extra-small: 10px;
+
+$font-small: 12px;
+$line-height-small: 18px;
+
+$font-standard: 14px;
+$line-height-standard: 21px;
+
+$font-medium: 16px;
+$line-height-medium: 24px;
+
+$font-medium-large: 18px;
+$line-height-medium-large: 27px;
+
+$font-large: 22px;
+$line-height-large: 33px;
+
+// Border sizes
+$border-small:  1px;
+$border-medium: 2px;
+$border-large: 3px;
+
+/// Container's maximum width
+$max-width: 870px !default;
+
+/// Breakpoints map
+$breakpoint-small: 320px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;

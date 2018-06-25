@@ -30,7 +30,7 @@ const postCssConfig = {
 
 module.exports = {
   mode: 'production',
-  devtool: 'source-map',
+  devtool: false,
   entry: paths.appIndexJs,
   output: {
     filename: 'js/[name].[chunkhash:8].js',
@@ -58,7 +58,7 @@ module.exports = {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true
+        sourceMap: false
       }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
@@ -72,7 +72,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|mjs)$/,
+        test: /\.(js|jsx)$/,
         enforce: 'pre',
         use: [
           {
@@ -84,6 +84,14 @@ module.exports = {
           }
         ],
         include: paths.appSrc,
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: 'media/[name].[hash:8].[ext]'
+        }
       },
       {
         test: /\.js$/,
@@ -101,6 +109,13 @@ module.exports = {
         }
       },
       {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'graphql-tag/loader'
+        }]
+      },
+      {
         test: /\.scss$/,
         include: paths.appSrc,
         exclude: /node_modules/,
@@ -111,7 +126,7 @@ module.exports = {
             options: {
               importLoaders: 2,
               modules: true,
-              sourceMap: true,
+              sourceMap: false,
               localIdentName: '[name]_[local]_[hash:base64:7]'
             }
           },
@@ -120,16 +135,12 @@ module.exports = {
             options: postCssConfig
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader',
+            options: {
+              includePaths: [paths.globalSass]
+            }
           }
         ]
-      },
-      {
-        test: /\.(graphql|gql)$/,
-        exclude: /node_modules/,
-        use: [{
-          loader: 'graphql-tag/loader'
-        }]
       }
     ]
   },
@@ -162,5 +173,8 @@ module.exports = {
     new ManifestPlugin({
       fileName: 'manifest.json'
     })
-  ]
+  ],
+  performance: {
+    hints: false
+  }
 };

@@ -58,7 +58,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|mjs)$/,
+        test: /\.(js|jsx)$/,
         enforce: 'pre',
         use: [
           {
@@ -70,6 +70,14 @@ module.exports = {
           }
         ],
         include: paths.appSrc
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: 'media/[name].[hash:8].[ext]'
+        }
       },
       {
         test: /\.js$/,
@@ -85,6 +93,13 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'graphql-tag/loader'
+        }]
       },
       {
         test: /\.scss$/,
@@ -105,16 +120,12 @@ module.exports = {
             options: postCssConfig
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader',
+            options: {
+              includePaths: [paths.globalSass]
+            }
           }
         ]
-      },
-      {
-        test: /\.(graphql|gql)$/,
-        exclude: /node_modules/,
-        use: [{
-          loader: 'graphql-tag/loader'
-        }]
       }
     ]
   },
@@ -125,5 +136,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: paths.appHtml
     })
-  ]
+  ],
+  performance: {
+    hints: false
+  }
 };

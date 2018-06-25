@@ -1,5 +1,5 @@
 import { graphql } from 'react-apollo';
-import MYSELF_QUERY from 'graphql/myselfQuery.graphql';
+import MYSELF_QUERY from './myselfQuery.graphql';
 
 const withUser = fields => (
   graphql(MYSELF_QUERY, {

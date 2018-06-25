@@ -1,0 +1,12 @@
+@import "shared.scss";
+
+.Title {
+  font-size: $font-large;
+  line-height: $line-height-large;
+  text-align: center;
+  margin-bottom: $sm;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

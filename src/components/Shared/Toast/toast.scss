@@ -1,0 +1,68 @@
+@import "shared.scss";
+
+.Container {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top:0;
+  z-index: 1000;
+  transition: transform 0.8s;
+  transform: translate(0, -200px);
+}
+
+.ContainerOpen {
+  composes: Container;
+  transform: translate(0, 0px);
+}
+
+.Inner {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Toast {
+  padding: $xs $md;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2), 0 8px 24px rgba(16, 22, 26, 0.2);
+  max-width: $max-width;
+  margin: $sm $sm 0 $sm;
+
+  @include small {
+    padding-left: $sm + 1;
+    padding-right: $sm + 1;
+  }
+
+  @include large {
+    margin: $sm 0 0 $sm;
+  }
+}
+
+.UseFullViewPort {
+  @include large {
+    margin: $sm $sm 0 $sm;
+  }
+}
+
+.Success {
+  border: $border-small solid $primary-grey;
+  background-color: #C6FFC4;
+  color: #3A3A3A;
+}
+
+.Danger {
+  background-color: #FFE2E4;
+  border: $border-small solid $primary-error;
+  color: $primary-error;
+
+  a {
+    text-decoration: underline;
+    color: $primary-error;
+  }
+}
+
+.Icon {
+  margin-left: $sm;
+  cursor: pointer;
+}

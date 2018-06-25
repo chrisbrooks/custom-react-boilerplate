@@ -1,0 +1,20 @@
+@import "shared.scss";
+
+.Container {
+  composes: Container from "containers/Layouts/App/app.scss";
+}
+
+.Wrapper {
+  min-height: 100%;
+  background: $body-background;
+}
+
+.Content {
+  margin-top: $sm;
+  display: flex;
+  justify-content: center;
+
+  @include medium-large {
+    margin-top: $header-height + $md;
+  }
+}
